@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>录音识别</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E6F7FF;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1890FF;
+            text-align: center;
+        }
+        .upload-section {
+            margin: 20px 0;
+        }
+        input[type="file"] {
+            display: block;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #1890FF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #40A9FF;
+        }
+        .result-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #F0F8FF;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #333;
+            margin-top: 0;
+        }
+        #result {
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>录音文件识别</h1>
+        <div class="upload-section">
+            <h2>上传录音文件</h2>
+            <input type="file" id="audioFile" accept="audio/*">
+            <button onclick="uploadFile()">提交识别</button>
+        </div>
+        <div class="result-section">
+            <h2>识别结果</h2>
+            <div id="result">请上传录音文件进行识别</div>
+        </div>
+    </div>
+    <script>
+        function uploadFile() {
+            const fileInput = document.getElementById('audioFile');
+            const resultDiv = document.getElementById('result');
+            
+            if (!fileInput.files.length) {
+                resultDiv.textContent = '请先选择录音文件';
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            resultDiv.textContent = '正在识别...';
+            
+            // 模拟识别过程
+            setTimeout(() => {
+                // 这里应该是实际的API调用
+                // 这里仅作为示例返回模拟结果
+                resultDiv.textContent = `识别完成！\n\n文件名: ${file.name}\n文件大小: ${(file.size / 1024).toFixed(2)} KB\n\n识别内容:\n这是一段模拟的录音识别结果，实际应用中会调用真实的语音识别API来获取识别内容。`;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
